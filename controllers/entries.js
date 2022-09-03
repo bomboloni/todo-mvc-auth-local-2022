@@ -1,5 +1,5 @@
 // Copied from todo.js... for now
-// Should now be entry/entries - hopefully I caught them all!
+// Should now be entry/entries - hopefully I caught them all! 
 
 const Entry = require('../models/Entry')
 
@@ -11,8 +11,8 @@ module.exports = {
             const entryItems = await Entry.find({userId:req.user.id})
             
             
-            const entryItems = await Todo.find({userId:req.user.id})
-            const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
+            // const entryItems = await Entry.find({userId:req.user.id})
+            const itemsLeft = await Entry.countDocuments({userId:req.user.id,completed: false})
             
             res.render('entries.ejs', {entries: entryItems, left: itemsLeft, user: req.user})
         }catch(err){
@@ -28,6 +28,18 @@ module.exports = {
             console.log(err)
         }
     },
+  ///Added -M
+      markComplete: async (req, res)=>{
+        try{
+            await Entry.findOneAndUpdate({_id:req.body.entryIdFromJSFile},{
+                completed: true
+            })
+            console.log('Marked Complete')
+            res.json('Marked Complete')
+        }catch(err){
+            console.log(err)
+        }
+      },
     
     markIncomplete: async (req, res)=>{
         try{
@@ -41,7 +53,7 @@ module.exports = {
         }
     },
     
-    deleteTodo: async (req, res)=>{
+    deleteEntry: async (req, res)=>{
         console.log(req.body.entryIdFromJSFile)
         try{
             await Entry.findOneAndDelete({_id:req.body.entryIdFromJSFile})

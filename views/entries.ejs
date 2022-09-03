@@ -30,7 +30,28 @@
     <h2><%= user.userName %> has <%= left %> things left to do.</h2>
 
     <form action="/entries/createEntry" method='POST'>
+       
         <input type="text" placeholder="Enter Entry Item" name='entryItem'>
+      <input type="date">
+<!--        <input type="radio"
+        name="expense"
+        id="expense"
+        value="true">
+      <input type="radio"
+        name="expense"
+        value="false"> -->
+      <input type="text"
+        placeholder="$0"
+        name="amount">
+      <input type="text"
+        placeholder="company"
+        name="company">
+      <input type="text"
+        placeholder="category"
+        name="category">
+     
+      
+        
         <input type="submit">
     </form>
 
