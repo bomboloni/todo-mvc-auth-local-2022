@@ -12,11 +12,7 @@ const EntrySchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
+  },  
   expense: {
     // true for expense, false for income
     type: Boolean,

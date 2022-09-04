@@ -8,32 +8,36 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Entries</h1>
-    <ul>
-    <% entries.forEach( el => { %>
-            <li class='entryItem' data-id='<%=el._id%>'>
-                <span><%= el.expense %></span>
-                <span><%= el.company %></span>
-                <span><%= el.amount %></span>
-              <span><%= el.category %></span>
+    <h1>Bean Tracker</h1>
 
-                
-                
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.company %></span>
-                
-                
-                <span class='del'> Delete </span>
-            </li>
-    <% }) %>    
-    </ul>
+    <table class="entry-table">
+        <thead>
+            <th>Company</th>
+            <th>Category</th>
+            <th>Amount</th>
+        </thead>
 
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+        <tbody>
+            <% entries.forEach( el => { %>
+                <tr>
+                    <td><%= el.company %></td>
+                    <td><%= el.category %></td>
+                    <td><%= el.amount %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <h2><%= user.userName %> has <%= count %> expenses.</h2>
+    <h2>Total: $<%= sum %></h2>
 
     <form action="/entries/createEntry" method='POST'>
-        <input type="text" placeholder="Enter Entry Item" name='entryItem'>
+        <input type="text" placeholder="Company" name='entryCompany'>
+        <input type="text" placeholder="Category" name='entryCategory'>
+        <input type="number" placeholder="Amount ($)" name='entryAmount'>
         <input type="submit">
     </form>
-
+    
     <a href="/logout">Logout</a>
 
     <script src="js/main.js"></script>
