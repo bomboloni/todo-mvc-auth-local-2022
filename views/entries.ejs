@@ -132,23 +132,23 @@
 										<h3>There is $<%= (incTotal-expTotal).toFixed(2) %> left to spend.</h3>
 									
 										<form action="/entries/createEntry" method='POST'>
-											<input type="date" name="date" id="dateEntryField">
+											<input type="date" required name="date" id="dateEntryField">
          
                                                 <label for="exp">Expense</label>
-											<input type="radio" id="exp" name="expense" value="true">
+											<input type="radio" required id="exp" name="expense" value="true">
 
 												<label for="inc">Income</label>
-                                            <input type="radio" id="inc" name="expense" value="false">
+                                            <input type="radio" required id="inc" name="expense" value="false">
 					
-											<input type="text" placeholder="0.00" name="amount">
+											<input type="text" required placeholder="0.00" name="amount">
 											
 
 											<input type="text" placeholder="description" name="description">
 											   
 									
-											<input type="text" placeholder="company" name="company">
+											<input type="text" required placeholder="company" name="company">
 											
-											<input type="text" placeholder="category" name="category">
+											<input type="text" required placeholder="category" name="category">
 									
 											<input type="submit">
 										</form>
